@@ -1,0 +1,19 @@
+" Improved javascript support
+
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'mxw/vim-jsx'
+
+Plug 'isRuslan/vim-es6'
+
+let g:jsx_ext_required = 0
+
+if has("autocmd")
+  if !exists("javascript_autocommands_loaded")
+    let javascript_autocommands_loaded = 1
+
+    autocmd BufEnter *.es6 setlocal filetype=javascript
+  endif
+endif
+
+" vim:ft=vim

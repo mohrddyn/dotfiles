@@ -1,0 +1,5 @@
+" Heroku toolbelt and hk wrapper
+
+Plug 'tpope/vim-heroku'
+
+" vim:ft=vim

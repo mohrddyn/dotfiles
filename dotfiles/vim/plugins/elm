@@ -1,0 +1,9 @@
+" Elm support
+
+let g:elm_setup_keybindings = 0
+
+Plug 'elmcast/elm-vim'
+
+let g:elm_format_fail_silently = 1
+
+" vim:ft=vim

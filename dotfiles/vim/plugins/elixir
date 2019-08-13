@@ -1,0 +1,6 @@
+" Elixir/Phoenix support
+
+Plug 'elixir-editors/vim-elixir'
+Plug 'avdgaag/vim-phoenix'
+
+" vim:ft=vim

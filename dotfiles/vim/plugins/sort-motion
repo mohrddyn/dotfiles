@@ -1,0 +1,5 @@
+" Sort a range of text
+
+Plug 'christoomey/vim-sort-motion'
+
+" vim:ft=vim

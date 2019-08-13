@@ -1,0 +1,10 @@
+" Autoload vimrc
+
+if has("autocmd")
+  if !exists("vimrc_autocommands_loaded")
+    let vimrc_autocommands_loaded = 1
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+  endif
+endif
+
+" vim:ft=vim

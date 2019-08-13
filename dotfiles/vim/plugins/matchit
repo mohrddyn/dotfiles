@@ -1,0 +1,5 @@
+" Extended % matching for many languages
+
+Plug 'tmhedberg/matchit'
+
+" vim:ft=vim

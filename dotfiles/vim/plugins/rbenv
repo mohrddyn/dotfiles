@@ -1,0 +1,5 @@
+" Rbenv support
+
+Plug 'tpope/vim-rbenv'
+
+" vim:ft=vim

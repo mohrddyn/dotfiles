@@ -1,0 +1,6 @@
+" Node.js support
+
+Plug 'moll/vim-node'
+Plug 'digitaltoad/vim-pug'
+
+" vim:ft=vim

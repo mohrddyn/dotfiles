@@ -1,0 +1,7 @@
+" Run Rspec specs
+
+Plug 'thoughtbot/vim-rspec'
+
+let g:rspec_command = 'Dispatch rspec {spec}'
+
+" vim:ft=vim

@@ -1,0 +1,7 @@
+" Clojure support
+
+Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-highlight'
+
+" vim:ft=vim

@@ -1,0 +1,20 @@
+" Markdown support
+
+Plug 'tpope/vim-markdown'
+
+let g:markdown_fenced_languages = [
+  \ 'sql',
+  \ 'javascript',
+  \ 'ruby',
+  \ 'sh',
+  \ 'yaml',
+  \ 'html',
+  \ 'vim',
+  \ 'json',
+  \ 'diff',
+  \ 'css',
+  \ 'sass',
+  \ 'scss'
+  \ ]
+
+" vim:ft=vim

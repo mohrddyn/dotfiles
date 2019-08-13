@@ -1,0 +1,5 @@
+" Delete other buffers
+
+Plug 'jbranchaud/vim-bdubs'
+
+" vim:ft=vim

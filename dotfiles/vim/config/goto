@@ -1,0 +1,15 @@
+" Autoload vimrc
+
+if has("autocmd")
+  if !exists("gotolast_autocommands_loaded")
+    let gotolast_autocommands_loaded = 1
+
+    " jump to the last known position in a file
+    autocmd BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+      \ | exe "normal! g'\""
+      \ | endif
+  endif
+endif
+
+" vim:ft=vim

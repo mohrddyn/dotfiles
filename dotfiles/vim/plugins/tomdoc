@@ -1,0 +1,5 @@
+" Highlights tomdoc comments
+
+Plug 'wellbredgrapefruit/tomdoc.vim'
+
+" vim:ft=vim

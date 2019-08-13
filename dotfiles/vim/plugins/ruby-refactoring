@@ -1,0 +1,5 @@
+" Refactoring tool for Ruby
+
+Plug 'ecomba/vim-ruby-refactoring'
+
+" vim:ft=vim

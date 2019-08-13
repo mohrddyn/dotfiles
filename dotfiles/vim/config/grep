@@ -1,0 +1,5 @@
+" The Silver Searcher
+
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
+endif

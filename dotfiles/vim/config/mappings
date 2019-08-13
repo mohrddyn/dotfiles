@@ -1,0 +1,22 @@
+" Keyboard mappings
+
+" search highlighting
+nnoremap <silent> <leader>h :<C-u>nohlsearch<CR>
+
+" buffers
+map <leader>n :bn<CR>
+map <leader>p :bp<CR>
+map <leader>d :bd<CR>
+
+" switch between the last two files
+nnoremap <leader><leader> <C-^>
+
+" unmap arrow keys
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
+inoremap <Right> <nop>

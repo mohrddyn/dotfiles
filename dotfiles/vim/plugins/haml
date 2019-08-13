@@ -1,0 +1,5 @@
+" Haml, Sass, SCSS support
+
+Plug 'tpope/vim-haml'
+
+" vim:ft=vim

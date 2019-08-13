@@ -1,0 +1,5 @@
+" Toggle ruby block styles
+
+Plug 'vim-scripts/blockle.vim'
+
+" vim:ft=vim

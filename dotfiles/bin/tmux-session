@@ -1,0 +1,62 @@
+#!/bin/sh -
+
+usage="Usage: tmux-session session-name [project-folder]"
+
+if [ $# -eq 0 ]; then
+  echo "$usage"
+  exit 1
+fi
+
+session="$1"
+shift
+
+case $# in
+  0)
+    folder="$session"
+    ;;
+  1)
+    folder="$1"
+    ;;
+  *)
+    echo "$usage"
+    exit 1
+    ;;
+esac
+
+if [ \! -z "$TMUX" ]; then
+  inside_tmux="yes"
+else
+  inside_tmux="no"
+fi
+
+tmux has-session -t "$session" 2>/dev/null
+
+if [ $? != 0 ]; then
+  folder="$HOME/projects/$folder"
+
+  if [ \! -d "$folder" ]; then
+    mkdir -p "$folder"
+  fi
+
+  # if [ \! -z $TMUX ]; then
+    # tmux detach
+  # fi
+
+  if [ "$inside_tmux" = "yes" ]; then
+    /bin/sh -c "tmux new-session -s '$session' -c '$folder' -d"
+  else
+    tmux new-session -s "$session" -c "$folder" -d
+  fi
+
+  tmux rename-window -t "$session:1" "main"
+  tmux split-window -h -p 40 -t "$session" -c "$folder"
+  tmux split-window -v -p 40 -t "$session" -c "$folder"
+  tmux send-keys -t "$session:1.1" 'vim' 'C-m'
+  tmux select-pane -t "$session:.1"
+fi
+
+if [ "$inside_tmux" = "yes" ]; then
+  tmux switch-client -t "$session"
+else
+  tmux attach -t "$session"
+fi

@@ -1,0 +1,11 @@
+" Slim support
+
+Plug 'slim-template/vim-slim'
+
+if has("autocmd")
+  if !exists("slim_autocommands_loaded")
+    let slim_autocommands_loaded = 1
+
+    autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
+  endif
+endif

@@ -1,0 +1,8 @@
+" Precision colorscheme for the vim text editor
+
+Plug 'altercation/vim-colors-solarized'
+
+let g:solarized_termcolors=256
+colorscheme solarized
+
+" vim:ft=vim

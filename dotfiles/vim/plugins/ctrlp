@@ -1,0 +1,11 @@
+" Fuzzy file, buffer, mru, tag, etc finder
+
+Plug 'kien/ctrlp.vim'
+
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
+endif
+
+" vim:ft=vim
+

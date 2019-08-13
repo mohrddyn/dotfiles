@@ -1,0 +1,26 @@
+" Create your own text objects
+
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'                  " al/il
+Plug 'kana/vim-textobj-indent'                " ai/ii, aI/ iI
+Plug 'kana/vim-textobj-entire'                " ae/ie
+
+Plug 'fvictorio/vim-textobj-backticks'        " a`/i`/ii` backticks
+Plug 'deathlyfrantic/vim-textobj-blanklines'  " a<Space>/i<Space> blank lines
+Plug 'kana/vim-textobj-datetime'              " ada/ida date
+Plug 'kana/vim-textobj-diff'                  " adh/idh diff output
+Plug 'whatyouhide/vim-textobj-erb'            " aE/iE erb tags
+Plug 'kana/vim-textobj-fold'                  " az/iz folded lines
+Plug 'gilligan/textobj-gitgutter'         " ih changed hunk marked
+Plug 'rsrchboy/vim-textobj-heredocs'          " aH/iH heredoc
+Plug 'vimtaku/vim-textobj-keyvalue'           " ak/iv key/value
+Plug 'kana/vim-textobj-lastpat'               " a//i/ region matched by search pattern
+Plug 'adriaanzon/vim-textobj-matchit'         " am/im matchit pairs
+Plug 'sgur/vim-textobj-parameter'             " a,/i, argument
+Plug 'beloglazov/vim-textobj-quotes'          " aq/iq quoted
+Plug 'jceb/vim-textobj-uri'                   " au/iu uri
+Plug 'julian/vim-textobj-variable-segment'    " av/iv snake_case/CamelCase
+Plug 'whatyouhide/vim-textobj-xmlattr'        " ax/ix xml/html attribute
+Plug 'tek/vim-textobj-ruby'                   " ac/af/ar/an/ic/if/ir/in
+
+" vim:ft=vim

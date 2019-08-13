@@ -1,0 +1,24 @@
+" vimrc
+
+set nocompatible
+
+function! s:SourceConfigFiles(dir)
+  let splat = '~/.vim/' . a:dir . '/*'
+  for file in split(glob(splat), '\n')
+    if filereadable(file)
+      execute 'source' file
+    endif
+  endfor
+endfunction
+
+call s:SourceConfigFiles('pre-config')
+
+call plug#begin('~/.vim/bundle')
+call s:SourceConfigFiles('plugins')
+call plug#end()
+
+call s:SourceConfigFiles('config')
+
+call s:SourceConfigFiles('post-config')
+
+" vim:ft=vim

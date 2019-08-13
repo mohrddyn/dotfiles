@@ -1,0 +1,6 @@
+" A git wrapper so awesome, it should be illegal
+
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+
+" vim:ft=vim

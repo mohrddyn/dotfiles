@@ -1,0 +1,44 @@
+" Options
+" Moving around, searching, patterns
+set incsearch
+set ignorecase
+set smartcase
+
+" Displaying text
+set scrolloff=2
+set wrap
+set lazyredraw
+set number
+set relativenumber
+
+" Syntax, highlighting, spelling
+set background=light
+set hlsearch
+set colorcolumn=+1,+2,+3,+4,+5
+
+" Multiple windows
+set laststatus=2
+
+" Messages, info
+set showcmd
+
+" Editing text
+set backspace=indent,eol,start
+set textwidth=80
+
+" Tabs, indenting
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+" Folding
+set nofoldenable
+set foldlevel=1
+set foldmethod=indent
+set foldnestmax=10
+
+" Encoding
+set encoding=utf-8
+set fileformat=unix
+
+" vim:ft=vim

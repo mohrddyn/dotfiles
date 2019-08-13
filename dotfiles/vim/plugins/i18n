@@ -1,0 +1,5 @@
+" Add i18n translations to your Rails project
+
+Plug 'stefanoverna/vim-i18n'
+
+" vim:ft=vim

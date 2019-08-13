@@ -1,0 +1,28 @@
+" Lean & mean status/tabline for vim that's light as air
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+function! AirlineInit()
+  let g:airline_left_sep = '»'
+  let g:airline_right_sep = '«'
+
+  let g:airline_symbols.notexists = ' ∄'
+
+  let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
+  let g:airline_section_b = airline#section#create_left(['hunks'])
+  let g:airline_section_c = airline#section#create(['%t%m'])
+endfunction
+
+let g:airline#extensions#branch#format = 1
+let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
+
+if has("autocmd")
+  if !exists("airline_autocommands_loaded")
+    let airline_autocommands_loaded = 1
+
+    autocmd User AirlineAfterInit call AirlineInit()
+  endif
+endif
+
+" vim:ft=vim

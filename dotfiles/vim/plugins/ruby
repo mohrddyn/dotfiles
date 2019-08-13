@@ -1,0 +1,15 @@
+" Ruby configuration files
+
+Plug 'vim-ruby/vim-ruby'
+
+let g:ruby_indent_access_modifier_style = 'indent'
+
+if has("autocmd")
+  if !exists("ruby_autocommnads_loaded")
+    let ruby_autocommands_loaded = 1
+
+    autocmd BufNewFile,BufRead *.pdf.prawn setlocal filetype=ruby
+  endif
+endif
+
+" vim:ft=vim

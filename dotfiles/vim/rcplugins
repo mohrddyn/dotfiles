@@ -1,0 +1,215 @@
+" Autoload vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Plugins
+call plug#begin('~/.vim/bundle')
+
+" keep plugin commands between vundle#begin/end
+
+" let Vundle manage Vundle, required
+" Plug 'gmarik/Vundle.vim'
+
+" Create non-existent folders
+Plug 'pbrisbin/vim-mkdir'
+
+" Unix tools
+Plug 'tpope/vim-eunuch'
+
+" Environment
+" Heuristically set buffer options
+Plug 'tpope/vim-sleuth'
+
+" Precision colorscheme
+Plug 'altercation/vim-colors-solarized'
+
+" UI, tools
+" Lean & mean status/tabline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Replace text
+Plug 'vim-scripts/ReplaceWithRegister'
+
+" Tree explorer
+" Plug 'scrooloose/nerdtree'
+" Show git status on nerdtree
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+
+" Git diff in the gutter and stages/reverts hunks
+Plug 'airblade/vim-gitgutter'
+
+" Fuzzy file, buffer, mru, tag, etc finder
+Plug 'kien/ctrlp.vim'
+
+" Text objects
+Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-textobj-indent'
+  Plug 'kana/vim-textobj-entire'
+  Plug 'kana/vim-textobj-line'
+  Plug 'nelstrom/vim-textobj-rubyblock'
+  Plug 'fvictorio/vim-textobj-backticks'
+  Plug 'sgur/vim-textobj-parameter'
+  Plug 'whatyouhide/vim-textobj-xmlattr'
+  Plug 'jasonlong/vim-textobj-css'
+
+" Language support
+" Quoting/parenthesizing
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+" Plug 'Townk/vim-autoclose'
+
+" Insert/delete brackets, parens, quotes in pair
+" Plug 'jiangmiao/auto-pairs'
+
+" Easily search for, substitute, and abbreviate multiple variants of a word
+Plug 'tpope/vim-abolish'
+
+" Wisely add "end" in ruby, endfunction/endif/more in vim, etc.
+Plug 'tpope/vim-endwise'
+
+" Extensible commenting
+Plug 'tomtom/tcomment_vim'
+
+" Asynchronous build and test dispatcher
+Plug 'tpope/vim-dispatch'
+
+" Snippets
+" Interpret a file by function, snipmate dependency
+Plug 'MarcWeber/vim-addon-mw-utils'
+" Utility functions, snipmate dependency
+Plug 'tomtom/tlib_vim'
+" Snipmate default snippets, snipmate dependency
+Plug 'honza/vim-snippets'
+" Snippets feature
+Plug 'garbas/vim-snipmate'
+
+" TomDoc
+Plug 'wellbredgrapefruit/tomdoc.vim'
+
+" Ruby on Rails
+" Ruby mode
+Plug 'vim-ruby/vim-ruby'
+
+Plug 'vim-scripts/blockle.vim'
+
+" Switch ruby versions from inside vim
+" Plug 'tpope/vim-rvm'
+
+Plug 'tpope/vim-projectionist'
+
+" Rails mode
+Plug 'tpope/vim-rails'
+
+Plug 'stefanoverna/vim-i18n'
+
+" Rake without rails
+Plug 'tpope/vim-rake'
+
+" Lightweight support for ruby's bundler
+Plug 'tpope/vim-bundler'
+
+" Refactoring tool for ruby
+Plug 'tmhedberg/matchit'
+Plug 'ecomba/vim-ruby-refactoring'
+" Plug 'sandeepravi/refactor-rails.vim'
+
+" Run specs
+" Plug 'thoughtbot/vim-rspec'
+
+" Cucumber
+" Plug 'tpope/vim-cucumber'
+
+" Ruby test runner
+" Plug 'skalnik/vim-vroom'
+
+" Splitjoin
+Plug 'AndrewRadev/splitjoin.vim'
+
+" Paste gists
+" Plug 'mattn/webapi-vim'
+" Plug 'mattn/gist-vim'
+
+" Database, other languages
+Plug 'mustache/vim-mustache-handlebars'
+
+" Database access
+Plug 'vim-scripts/dbext.vim'
+
+" Javascript
+Plug 'pangloss/vim-javascript'
+
+" Enhanced javascript syntax
+Plug 'jelera/vim-javascript-syntax'
+
+" Coffeescript
+Plug 'kchmck/vim-coffee-script'
+
+" ES6
+Plug 'isRuslan/vim-es6'
+
+" React
+Plug 'mxw/vim-jsx'
+
+" Slim
+Plug 'slim-template/vim-slim'
+
+" Haml, Sass, SCSS
+Plug 'tpope/vim-haml'
+
+" Less
+" Plug 'groenewege/vim-less'
+
+" Markdown
+Plug 'tpope/vim-markdown', {'for': 'markdown'}
+
+" Elixir
+Plug 'elixir-editors/vim-elixir'
+Plug 'avdgaag/vim-phoenix'
+Plug 'elmcast/elm-vim'
+
+" Clojure
+" Plug 'guns/vim-clojure-static'
+
+" Erlang
+" Plug 'jimenezrick/vimerl'
+
+" Node
+" moll/vim-node
+" digitaltoad/vim-pug
+" rsludge/vim-sails
+
+" Browse ruby, rails and rspec docs quickly
+" Plug 'lucapette/vim-ruby-doc'
+
+" Syntax checking hacks
+" Plug 'scrooloose/syntastic'
+
+" Delete other buffers
+Plug 'jbranchaud/vim-bdubs'
+
+" Heroku toolbelt
+Plug 'tpope/vim-heroku'
+
+" Sorting
+Plug 'christoomey/vim-sort-motion'
+
+" Copy to system clipboard
+" Plug 'christoomey/vim-system-copy'
+
+" Tmux navigation
+" Plug 'christoomey/vim-tmux-runner'
+Plug 'christoomey/vim-tmux-navigator'
+
+" Vim undo tree (requires python 2.4+)
+Plug 'sjl/gundo.vim'
+
+" All of your Plugins must be added before the following line
+call plug#end()
