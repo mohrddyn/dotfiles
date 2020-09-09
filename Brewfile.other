@@ -1,7 +1,6 @@
 cask "1password"
 cask "adobe-creative-cloud"
 cask "dash"
-cask "espionage"
 cask "fantastical"
 cask "github"
 cask "google-chrome"
