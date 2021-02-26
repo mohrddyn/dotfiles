@@ -1,3 +1,0 @@
-if which nodenv >/dev/null; then eval "$(nodenv init -)"; fi
-if which exenv >/dev/null; then eval "$(exenv init -)"; fi
-eval "$(rbenv init -)"
