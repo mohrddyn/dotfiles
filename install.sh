@@ -2,7 +2,12 @@
 
 echo "Setting up your Mac..."
 
-HOMEBREW_PREFIX="/usr/local"
+CPU=$(uname -p)
+if [[ "$CPU" == "arm" ]]; then
+  HOMEBREW_PREFIX="/opt/homebrew"
+else
+  HOMEBREW_PREFIX="/usr/local"
+fi
 
 if [ ! -d "$HOME/.bin" ]; then
   mkdir "$HOME/.bin"
@@ -23,7 +28,7 @@ echo "DOTFILES_DIRS=\"$DOTFILES_DIRS\"" >$HOME/.rcrc
 
 # Install homebrew if we do not have it
 if test ! $(which brew); then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Update homebrew recipes
@@ -35,7 +40,6 @@ brew bundle --file=- <<EOF
 brew "readline"
 brew "autoconf"
 brew "pkg-config"
-brew "makedepend"
 brew "openssl"
 brew "ruby-build"
 brew "rbenv"
@@ -47,10 +51,10 @@ brew "nodenv", args: ["without-bash-extension"]
 brew "jemalloc"
 EOF
 
-./environments.sh
-
 # Install the rest with bundle
 brew bundle
+
+./environments.sh
 
 # Make Zsh the default shell
 chsh -s $(which zsh)
@@ -58,4 +62,20 @@ chsh -s $(which zsh)
 # Set macOS preferences
 # source macOS
 
-./post-install.sh
+# ./post-install.sh
+
+rcup bin irbrc psqlrc iex.exs
+rcup gemrc bundle rbenv chef gitconfig
+rcup git_template gitattributes gitignore gitignore_global
+rcup tmux tmux.conf vimrc vim zprofile zshenv
+rcup agignore aws
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+cp .zshrc .zshrc.post-oh-my-zsh
+rm .zshrc .zshrc.pre-oh-my-zsh
+rcup zshrc oh-my-zsh
+
+vim -c PlugInstall -c qall
+
+# heroku plugins:install heroku-accounts

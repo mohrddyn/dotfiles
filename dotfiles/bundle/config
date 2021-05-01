@@ -1,6 +1,5 @@
 ---
-BUNDLE_GEM__COC: 'false'
-BUNDLE_GEM__MIT: 'true'
-BUNDLE_GEM__TEST: rspec
-BUNDLE_BUILD__LIBV8: "--with-v8-dir=/usr/local/Cellar/v8/5.0.71.33"
-BUNDLE_BUILD__THERUBYRACER: "--with-v8-dir=/usr/local/Cellar/v8/5.0.71.33"
+BUNDLE_GEM__COC: "false"
+BUNDLE_GEM__MIT: "true"
+BUNDLE_GEM__TEST: "rspec"
+BUNDLE_BUILD__LIBV8: "--with-system-v8"

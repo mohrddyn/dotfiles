@@ -1,3 +1,6 @@
+tags
+.tm_properties
+.byebug_history
 *.sw[nop]
 .node-version
 erd.pdf

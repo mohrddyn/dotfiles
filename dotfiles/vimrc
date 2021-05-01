@@ -1,3 +1,7 @@
+if &compatible
+  set nocompatible
+endif
+
 " Options
 " Moving around, searching, patterns
 set incsearch
@@ -14,7 +18,7 @@ set relativenumber
 " Syntax, highlighting, spelling
 set background=light
 set hlsearch
-set colorcolumn=+1,+2,+3,+4
+" set colorcolumn=+1,+2,+3,+4
 
 " Multiple windows
 set laststatus=2
@@ -42,212 +46,220 @@ set foldnestmax=10
 set encoding=utf-8
 set fileformat=unix
 
+filetype plugin indent on
+syntax on
+
+set list
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+
 packadd minpac
-call minpac#init()
+if exists('g:loaded_minpac')
+  call minpac#init()
 
-" Local vimrc
-call minpac#add('embear/vim-localvimrc')
+  " A minimal package manager for Vim 8 and NeoVim
+  call minpac#add('k-takata/minpac', {'type': 'opt'})
 
-" direnv
-call minpac#add('direnv/direnv.vim')
+  " vmath
+  call minpac#add('nixon/vim-vmath')
 
-" EditorConfig
-call minpac#add('sgur/vim-editorconfig')
+  " direnv
+  " call minpac#add('direnv/direnv.vim')
 
-" Easily search for, substitute, and abbreviate multiple variants of a word
-call minpac#add('tpope/vim-abolish')
+  " EditorConfig
+  " call minpac#add('sgur/vim-editorconfig')
 
-" Delete other buffers
-call minpac#add('jbranchaud/vim-bdubs')
+  " Easily search for, substitute, and abbreviate multiple variants of a word
+  call minpac#add('tpope/vim-abolish')
 
-" Lean & mean status/tabline for vim that's light as air
-call minpac#add('vim-airline/vim-airline')
-call minpac#add('vim-airline/vim-airline-themes')
+  " Delete other buffers
+  " call minpac#add('jbranchaud/vim-bdubs')
 
-" Precision colorscheme for the vim text editor
-" call minpac#add('altercation/vim-colors-solarized')
+  " Lean & mean status/tabline for vim that's light as air
+  call minpac#add('vim-airline/vim-airline')
+  call minpac#add('vim-airline/vim-airline-themes')
 
-" Fuzzy file, buffer, mru, tag, etc finder
-call minpac#add('kien/ctrlp.vim')
+  " Precision colorscheme for the vim text editor
+  " call minpac#add('altercation/vim-colors-solarized')
 
-" Asynchronous build and test dispatcher
-call minpac#add('tpope/vim-dispatch')
+  " Fuzzy file, buffer, mru, tag, etc finder
+  call minpac#add('kien/ctrlp.vim')
 
-" Helpers for UNIX
-call minpac#add('tpope/vim-eunuch')
+  " Asynchronous build and test dispatcher
+  call minpac#add('tpope/vim-dispatch')
 
-" A git wrapper so awesome, it should be illegal
-call minpac#add('tpope/vim-fugitive')
-call minpac#add('tpope/vim-rhubarb')
+  " Helpers for UNIX
+  call minpac#add('tpope/vim-eunuch')
 
-" A vim plugin that shows a git diff in the gutter and stages/undoes hunks
-call minpac#add('airblade/vim-gitgutter')
+  " A git wrapper so awesome, it should be illegal
+  call minpac#add('tpope/vim-fugitive')
+  call minpac#add('tpope/vim-rhubarb')
 
-" Heroku toolbelt and hk wrapper
-call minpac#add('tpope/vim-heroku', {'type': 'opt'})
+  " A vim plugin that shows a git diff in the gutter and stages/undoes hunks
+  call minpac#add('airblade/vim-gitgutter')
 
-" Markdown support
-call minpac#add('tpope/vim-markdown')
+  " Heroku toolbelt and hk wrapper
+  call minpac#add('tpope/vim-heroku', {'type': 'opt'})
 
-" Extended % matching for many languages
-call minpac#add('tmhedberg/matchit')
+  " Markdown support
+  call minpac#add('tpope/vim-markdown')
 
-" Automatically create any non-existent directories before writing the buffer
-call minpac#add('pbrisbin/vim-mkdir')
+  " Extended % matching for many languages
+  call minpac#add('tmhedberg/matchit')
 
-" Granular project configuration
-call minpac#add('tpope/vim-projectionist')
+  " Automatically create any non-existent directories before writing the buffer
+  call minpac#add('pbrisbin/vim-mkdir')
 
-" Enable repeating supported plugin maps with '.'
-call minpac#add('tpope/vim-repeat')
+  " Granular project configuration
+  call minpac#add('tpope/vim-projectionist')
 
-" Replace text with the contents of a register
-call minpac#add('vim-scripts/ingo-library')
-call minpac#add('vim-scripts/ReplaceWithRegister')
-call minpac#add('vim-scripts/ReplaceWithSameIndentRegister')
+  " Enable repeating supported plugin maps with '.'
+  call minpac#add('tpope/vim-repeat')
 
-" Snippets feature
-call minpac#add('MarcWeber/vim-addon-mw-utils')
-call minpac#add('tomtom/tlib_vim')
-call minpac#add('garbas/vim-snipmate')
+  " Replace text with the contents of a register
+  call minpac#add('vim-scripts/ingo-library')
+  call minpac#add('vim-scripts/ReplaceWithRegister')
+  call minpac#add('vim-scripts/ReplaceWithSameIndentRegister')
 
-call minpac#add('honza/vim-snippets')
+  " Snippets feature
+  call minpac#add('MarcWeber/vim-addon-mw-utils')
+  call minpac#add('tomtom/tlib_vim')
+  call minpac#add('garbas/vim-snipmate')
 
-" Sort a range of text
-call minpac#add('christoomey/vim-sort-motion')
+  call minpac#add('honza/vim-snippets')
 
-" Simplify transition between single-line and multiline code
-call minpac#add('AndrewRadev/splitjoin.vim')
+  " Sort a range of text
+  call minpac#add('christoomey/vim-sort-motion')
 
-" Quoting/parenthesizing made simple
-call minpac#add('tpope/vim-surround')
+  " Simplify transition between single-line and multiline code
+  call minpac#add('AndrewRadev/splitjoin.vim')
 
-" An extensible & universal comment plugin
-call minpac#add('tomtom/tcomment_vim')
+  " Quoting/parenthesizing made simple
+  call minpac#add('tpope/vim-surround')
 
-" Create your own text objects
-call minpac#add('kana/vim-textobj-user')
-call minpac#add('kana/vim-textobj-line')                  " al/il
-call minpac#add('kana/vim-textobj-indent')                " ai/ii, aI/ iI
-call minpac#add('kana/vim-textobj-entire')                " ae/ie
+  " An extensible & universal comment plugin
+  call minpac#add('tomtom/tcomment_vim')
 
-call minpac#add('fvictorio/vim-textobj-backticks')        " a`/i`/ii` backticks
-call minpac#add('deathlyfrantic/vim-textobj-blanklines')  " a<Space>/i<Space> blank lines
-call minpac#add('kana/vim-textobj-datetime')              " ada/ida date
-call minpac#add('kana/vim-textobj-diff')                  " adh/idh diff output
-call minpac#add('whatyouhide/vim-textobj-erb')            " aE/iE erb tags
-call minpac#add('kana/vim-textobj-fold')                  " az/iz folded lines
-call minpac#add('gilligan/textobj-gitgutter')         		" ih changed hunk marked
-call minpac#add('rsrchboy/vim-textobj-heredocs')          " aH/iH heredoc
-call minpac#add('vimtaku/vim-textobj-keyvalue')           " ak/iv key/value
-call minpac#add('kana/vim-textobj-lastpat')               " a//i/ region matched by search pattern
-call minpac#add('adriaanzon/vim-textobj-matchit')         " am/im matchit pairs
-call minpac#add('sgur/vim-textobj-parameter')             " a,/i, argument
-call minpac#add('beloglazov/vim-textobj-quotes')          " aq/iq quoted
-call minpac#add('jceb/vim-textobj-uri')                   " au/iu uri
-call minpac#add('julian/vim-textobj-variable-segment')    " av/iv snake_case/CamelCase
-call minpac#add('whatyouhide/vim-textobj-xmlattr')        " ax/ix xml/html attribute
-call minpac#add('tek/vim-textobj-ruby')                   " ac/af/ar/an/ic/if/ir/in
+  " Create your own text objects
+  call minpac#add('kana/vim-textobj-user')
+  call minpac#add('kana/vim-textobj-line')                  " al/il
+  call minpac#add('kana/vim-textobj-indent')                " ai/ii, aI/ iI
+  call minpac#add('kana/vim-textobj-entire')                " ae/ie
 
-" Seamless navigation between tmux panes and vim splits
-call minpac#add('christoomey/vim-tmux-navigator')
+  call minpac#add('fvictorio/vim-textobj-backticks')        " a`/i`/ii` backticks
+  call minpac#add('deathlyfrantic/vim-textobj-blanklines', {'branch': 'main'})  " a<Space>/i<Space> blank lines
+  call minpac#add('kana/vim-textobj-datetime')              " ada/ida date
+  call minpac#add('kana/vim-textobj-diff')                  " adh/idh diff output
+  call minpac#add('whatyouhide/vim-textobj-erb')            " aE/iE erb tags
+  call minpac#add('kana/vim-textobj-fold')                  " az/iz folded lines
+  call minpac#add('gilligan/textobj-gitgutter')             " ih changed hunk marked
+  call minpac#add('rsrchboy/vim-textobj-heredocs')          " aH/iH heredoc
+  call minpac#add('vimtaku/vim-textobj-keyvalue')           " ak/iv key/value
+  call minpac#add('kana/vim-textobj-lastpat')               " a//i/ region matched by search pattern
+  call minpac#add('adriaanzon/vim-textobj-matchit')         " am/im matchit pairs
+  call minpac#add('sgur/vim-textobj-parameter')             " a,/i, argument
+  call minpac#add('beloglazov/vim-textobj-quotes')          " aq/iq quoted
+  call minpac#add('jceb/vim-textobj-uri')                   " au/iu uri
+  call minpac#add('julian/vim-textobj-variable-segment')    " av/iv snake_case/CamelCase
+  call minpac#add('whatyouhide/vim-textobj-xmlattr')        " ax/ix xml/html attribute
+  call minpac#add('tek/vim-textobj-ruby')                   " ac/af/ar/an/ic/if/ir/in
 
-" Pairs of handy bracket mappings
-call minpac#add('tpope/vim-unimpaired')
+  " Seamless navigation between tmux panes and vim splits
+  call minpac#add('christoomey/vim-tmux-navigator')
 
-" A minimal package manager for Vim 8 and NeoVim
-call minpac#add('k-takata/minpac', {'type': 'opt'})
+  " Pairs of handy bracket mappings
+  call minpac#add('tpope/vim-unimpaired')
 
-" Languages/Ruby
-" Toggle ruby block styles
-call minpac#add('vim-scripts/blockle.vim')
+  " Languages/Ruby
+  " Toggle ruby block styles
+  call minpac#add('vim-scripts/blockle.vim')
 
-" Lightweight support for Ruby's bundler
-call minpac#add('tpope/vim-bundler')
+  " Lightweight support for Ruby's bundler
+  call minpac#add('tpope/vim-bundler')
 
-" Wisely add "end" in ruby, endfunction/endif/more in vimscript, etc
-call minpac#add('tpope/vim-endwise')
+  " Wisely add "end" in ruby, endfunction/endif/more in vimscript, etc
+  call minpac#add('tpope/vim-endwise')
 
-" Add i18n translations to your Rails project
-call minpac#add('stefanoverna/vim-i18n')
+  " Add i18n translations to your Rails project
+  call minpac#add('stefanoverna/vim-i18n')
 
-" Ruby on Rails power tools
-call minpac#add('tpope/vim-rails')
+  " Ruby on Rails power tools
+  call minpac#add('tpope/vim-rails')
 
-" It's like vim-rails without the rails
-call minpac#add('tpope/vim-rake')
+  " It's like vim-rails without the rails
+  call minpac#add('tpope/vim-rake')
 
-" Rbenv support
-call minpac#add('tpope/vim-rbenv')
+  " Rbenv support
+  call minpac#add('tpope/vim-rbenv')
 
-" Run Rspec specs
-call minpac#add('thoughtbot/vim-rspec')
+  " Run Rspec specs
+  call minpac#add('thoughtbot/vim-rspec')
 
-" Ruby configuration files
-call minpac#add('vim-ruby/vim-ruby')
+  " Ruby configuration files
+  call minpac#add('vim-ruby/vim-ruby')
 
-" Refactoring tool for Ruby
-call minpac#add('ecomba/vim-ruby-refactoring')
+  " Refactoring tool for Ruby
+  call minpac#add('ecomba/vim-ruby-refactoring', {'branch': 'main'})
 
-" Highlights tomdoc comments
-call minpac#add('wellbredgrapefruit/tomdoc.vim')
+  " Highlights tomdoc comments
+  call minpac#add('wellbredgrapefruit/tomdoc.vim')
 
-" Languages/Elixir
-call minpac#add('elixir-editors/vim-elixir')
-call minpac#add('avdgaag/vim-phoenix')
+  " Languages/Elixir
+  call minpac#add('elixir-editors/vim-elixir')
+  call minpac#add('avdgaag/vim-phoenix')
 
-" Languages/Javascript
-call minpac#add('pangloss/vim-javascript')
-call minpac#add('jelera/vim-javascript-syntax')
-call minpac#add('mxw/vim-jsx')
-call minpac#add('isRuslan/vim-es6')
+  " Languages/Javascript
+  call minpac#add('pangloss/vim-javascript')
+  call minpac#add('jelera/vim-javascript-syntax')
+  call minpac#add('mxw/vim-jsx')
+  call minpac#add('isRuslan/vim-es6')
 
-" Node.js support
-call minpac#add('moll/vim-node')
-call minpac#add('digitaltoad/vim-pug')
+  " Node.js support
+  call minpac#add('moll/vim-node')
+  call minpac#add('digitaltoad/vim-pug')
 
-" Languages/Haml, Sass, SCSS
-call minpac#add('tpope/vim-haml')
+  " Languages/Haml, Sass, SCSS
+  call minpac#add('tpope/vim-haml')
 
-" Languages/Slim
-call minpac#add('slim-template/vim-slim')
+  " Languages/Slim
+  call minpac#add('slim-template/vim-slim')
 
-" Languages/Coffeescript
-call minpac#add('kchmck/vim-coffee-script', {'type': 'opt'})
+  " Languages/Coffeescript
+  call minpac#add('kchmck/vim-coffee-script', {'type': 'opt'})
 
-" Languages/Elm
-call minpac#add('elmcast/elm-vim', {'type': 'opt'})
+  " Languages/Elm
+  call minpac#add('elmcast/elm-vim', {'type': 'opt'})
 
-" Languages/Clojure
-call minpac#add('tpope/vim-fireplace', {'type': 'opt'})
-call minpac#add('guns/vim-clojure-static', {'type': 'opt'})
-call minpac#add('guns/vim-clojure-highlight', {'type': 'opt'})
+  " Languages/Clojure
+  call minpac#add('tpope/vim-fireplace', {'type': 'opt'})
+  call minpac#add('guns/vim-clojure-static', {'type': 'opt'})
+  call minpac#add('guns/vim-clojure-highlight', {'type': 'opt'})
 
-" Languages/Common Lisp
-call minpac#add('jpalardy/vim-slime', {'type': 'opt'})
+  " Languages/Common Lisp
+  call minpac#add('jpalardy/vim-slime', {'type': 'opt', 'branch': 'main'})
 
-" Languages/vimL
-call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
+  " Languages/vimL
+  call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
 
-" Database access to many dbms
-call minpac#add('vim-scripts/dbext.vim', {'type': 'opt'})
+  " Database access to many dbms
+  call minpac#add('vim-scripts/dbext.vim', {'type': 'opt'})
 
-command! PackUpdate call minpac#update()
-command! PackClean call minpac#clean()
+  command! PackUpdate call minpac#update()
+  command! PackClean call minpac#clean()
 
-function! AirlineInit()
-  let g:airline_left_sep = '»'
-  let g:airline_right_sep = '«'
+  function! AirlineInit()
+    let g:airline_left_sep = '»'
+    let g:airline_right_sep = '«'
 
-  let g:airline_symbols.notexists = ' ∄'
+    let g:airline_symbols.notexists = ' ∄'
 
-  let g:airline#extensions#branch#format = 1
-  let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
+    let g:airline#extensions#branch#format = 1
+    let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
 
-  let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
-  let g:airline_section_b = airline#section#create_left(['hunks'])
-  let g:airline_section_c = airline#section#create(['%t%m'])
-endfunction
+    let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
+    let g:airline_section_b = airline#section#create_left(['hunks'])
+    let g:airline_section_c = airline#section#create(['%t%m'])
+  endfunction
+endif
 
 let g:EditorConfig_exclude_patterns =['fugitive://.*']
 
@@ -278,6 +290,7 @@ let g:markdown_fenced_languages = [
   \ ]
 
 let g:rspec_command = 'Dispatch rspec {spec}'
+let g:rspec_runner = 'os_x_iterm2'
 
 let g:ruby_indent_access_modifier_style = 'indent'
 
@@ -300,6 +313,8 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.pdf.prawn setlocal filetype=ruby
 
     autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
+
+    autocmd WinEnter * call matchadd('ColorColumn', '\%81v', 100)
 
     autocmd User AirlineAfterInit call AirlineInit()
   endif
@@ -354,7 +369,4 @@ inoremap <Down> <nop>
 inoremap <Left> <nop>
 inoremap <Right> <nop>
 
-filetype plugin indent on
-syntax on
-
-" vim:ft=vim
+" vi:ft=vim

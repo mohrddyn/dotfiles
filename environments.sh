@@ -13,7 +13,7 @@ if test -n "${ruby}"; then
   read rails
 
   if test -n "${rails}"; then
-    "${HOME}/.rbenv/versions/${ruby}/bin/gem" install rails --version "$version" --no-ri --no-rdoc
+    "${HOME}/.rbenv/versions/${ruby}/bin/gem" install rails --version "$version" --no-document
   fi
 fi
 

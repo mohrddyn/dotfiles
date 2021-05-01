@@ -9,6 +9,7 @@
 [core]
 	excludesfile = /Users/jarih/.gitignore
 	autocrlf = input
+	attributesfile = /Users/jarih/.gitattributes
 [push]
 	default = simple
 [filter "hawser"]
@@ -16,6 +17,9 @@
 	smudge = git hawser smudge %f
 	required = true
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
+[diff "rspec"]
+  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario|background)[ \t].*)$"

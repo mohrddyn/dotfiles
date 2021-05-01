@@ -1,0 +1,41 @@
+#!/bin/sh -
+
+if [ -z "$TMUX" ]; then
+  echo "You need to run this command inside tmux session"
+  exit 1
+fi
+
+usage="Usage: tmux-window path"
+
+if [ $# -eq 0 ]; then
+  echo "$usage"
+  exit 1
+fi
+
+path="`pwd `/$1"
+shift
+
+case $# in
+  0)
+    name=`basename "$path"`
+    ;;
+  1)
+    name="$1"
+    ;;
+  *)
+    echo "$usage"
+    exit 1
+    ;;
+esac
+
+if [ \! -d "$path" ]; then
+  mkdir -p "$path"
+fi
+
+tmux new-window -c "$path"
+tmux rename-window "$name"
+tmux split-window -h -p 46 -c "$path"
+tmux resize-pane -L
+tmux split-window -v -p 46 -c "$path"
+tmux send-keys -t "{left}" 'vim' 'C-m'
+tmux select-pane -t "{left}"

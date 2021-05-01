@@ -1,5 +1,13 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+if [[ "$ZPROF" = true ]]; then
+  zmodload zsh/zprof
+fi
+
+CPU=$(uname -p)
+if [[ "$CPU" == "arm" ]]; then
+  HOMEBREW_PATH="/opt/homebrew"
+else
+  HOMEBREW_PATH="/usr/local"
+fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/jarih/.oh-my-zsh
@@ -17,7 +25,7 @@ ZSH_THEME="theme"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -51,9 +59,17 @@ ZSH_THEME="theme"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gitfast git-flow fasd heroku ruby rails)
+plugins=(git gitfast git-flow heroku mix ruby rails xcode yarn)
 
-source $ZSH/oh-my-zsh.sh
+profzsh() {
+  shell=${1-$SHELL}
+  ZPROF=true $shell -i -c exit
+}
+
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
 
 # User configuration
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
@@ -84,37 +100,80 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export EDITOR='vim'
-export LC_ALL=en_US.UTF-8
-export LANG=en_GB
+if [[ "$CPU" == "arm" ]]; then
+  export EDITOR=/opt/homebrew/bin/vim
+else
+  export EDITOR=/usr/local/bin/vim
+fi
 
 # No automagic cleanups
 export HOMEBREW_NO_INSTALL_CLEANUP=true
 
-export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
+# export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
 
-fpath=(/usr/local/share/zsh/site-functions /usr/local/share/zsh-completions $fpath)
+if [[ "$CPU" == "arm" ]]; then
+  fpath=(/opt/homebrew/share/zsh/site-functions /opt/homebrew/share/zsh-completions $fpath)
+else
+  fpath=(/usr/local/share/zsh/site-functions /usr/local/share/zsh-completions $fpath)
+fi
 
+eval "$(rbenv init - --no-rehash)"
+eval "$(nodenv init - --no-rehash)"
+eval "$(exenv init - --no-rehash)"
 eval "$(direnv hook $SHELL)"
 
-if which nodenv >/dev/null; then eval "$(nodenv init -)"; fi
-if which exenv >/dev/null; then eval "$(exenv init -)"; fi
+# if [ $commands[rbenv] ]; then
+#   rbenv() {
+#     unfunction "$0"
+#     eval "$(rbenv init - --no-rehash)"
+#     $0 "$@"
+#   }
+# fi
+#
+# if [ $commands[nodenv] ]; then
+#   nodenv() {
+#     unfunction "$0"
+#     eval "$(nodenv init -)"
+#     $0 "$@"
+#   }
+# fi
+#
+# if [ $commands[exenv] ]; then
+#   nodenv() {
+#     unfunction "$0"
+#     eval "$(exenv init -)"
+#     $0 "$@"
+#   }
+# fi
+#
+# if [ $commands[direnv] ]; then
+#   direnv() {
+#     unfunction "$0"
+#     eval "$(direnv hook $SHELL)"
+#     $0 "$@"
+#   }
+# fi
 
-eval "$(rbenv init -)"
+# if which yarn >/dev/null; then export PATH="$PATH:`yarn global bin `"; fi
 
-if which yarn >/dev/null; then export PATH="$PATH:`yarn global bin `"; fi
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+if [[ "$CPU" == "arm" ]]; then
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/opt/homebrew/opt/openssl@1.1"
+else
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
+fi
 
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+alias be="bundle exec"
+alias rdmr="rails db:migrate:redo"
 
-export PATH="$HOME/.bin:$PATH:/usr/local/sbin"
-
-alias rmdr="rails db:migrate:redo"
-
+alias gcd="git checkout develop"
 alias gready='git branch --merged master |command grep -vE "^(\*|\s*develop\s*|\s*master\s*$)"'
 alias gsweep='git branch --merged master |command grep -vE "^(\*|\s*develop\s*|\s*master\s*$)" |command xargs -n 1 git branch -d'
 
-alias gcd="git checkout develop"
-
-alias be="bundle exec"
-alias git="hub"
 alias vi="vim"
+
+source $ZSH/oh-my-zsh.sh
+
+if [[ "$ZPROF" = true ]]; then
+  zprof
+fi
