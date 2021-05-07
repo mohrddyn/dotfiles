@@ -10,12 +10,12 @@ else
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jarih/.oh-my-zsh
+# export ZSH=/Users/jarih/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="theme"
+# ZSH_THEME="theme"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -25,7 +25,7 @@ ZSH_THEME="theme"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+# DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -59,7 +59,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gitfast git-flow heroku mix ruby rails xcode yarn)
+# plugins=(git gitfast git-flow heroku mix ruby rails xcode yarn)
 
 profzsh() {
   shell=${1-$SHELL}
@@ -172,7 +172,29 @@ alias gsweep='git branch --merged master |command grep -vE "^(\*|\s*develop\s*|\
 
 alias vi="vim"
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
+
+if [[ "$CPU" == "arm" ]]; then
+  source /opt/homebrew/opt/antigen/share/antigen/antigen.zsh
+else
+  source /opt/local/opt/antigen/share/antigen/antigen.zsh
+fi
+
+antigen use oh-my-zsh
+
+# plugins=(git gitfast git-flow heroku mix ruby rails xcode yarn)
+antigen bundle git
+antigen bundle gitfast
+antigen bundle git-flow
+antigen bundle mix
+antigen bundle ruby
+antigen bundle rails
+antigen bundle xcode
+antigen bundle yarn
+
+antigen bundle /Users/jarih/.oh-my-zsh/custom theme.zsh-theme --no-local-clone
+
+antigen apply
 
 if [[ "$ZPROF" = true ]]; then
   zprof

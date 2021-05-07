@@ -35,6 +35,7 @@ fi
 brew update --force
 brew tap homebrew/core
 brew tap homebrew/bundle
+brew tap homebrew/services
 
 brew bundle --file=- <<EOF
 brew "readline"
@@ -51,13 +52,13 @@ brew "nodenv", args: ["without-bash-extension"]
 brew "jemalloc"
 EOF
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Install the rest with bundle
 brew bundle
 
-./environments.sh
-
 # Make Zsh the default shell
-chsh -s $(which zsh)
+# chsh -s $(which zsh)
 
 # Set macOS preferences
 # source macOS
@@ -70,12 +71,14 @@ rcup git_template gitattributes gitignore gitignore_global
 rcup tmux tmux.conf vimrc vim zprofile zshenv
 rcup agignore aws
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-cp .zshrc .zshrc.post-oh-my-zsh
-rm .zshrc .zshrc.pre-oh-my-zsh
+# cp .zshrc .zshrc.post-oh-my-zsh
+# rm .zshrc .zshrc.pre-oh-my-zsh
 rcup zshrc oh-my-zsh
 
-vim -c PlugInstall -c qall
+./environments.sh
+
+# vim -c PlugInstall -c qall
 
 # heroku plugins:install heroku-accounts

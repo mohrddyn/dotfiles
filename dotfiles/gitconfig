@@ -3,7 +3,7 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 [user]
-	name = Jari Hennilä
+	name = Jari Hennilä
 	email = jari.hennila@gmail.com
 	sigingkey = 5295CB4CB741E635
 [core]

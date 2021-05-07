@@ -267,7 +267,7 @@ let g:localvimrc_name = ['.vimrc.local']
 
 " let g:solarized_termcolors = 256
 set background=light
-colorscheme solarized8
+"colorscheme solarized8
 
 let g:elm_setup_keybindings = 0
 let g:elm_format_fail_silently = 1
@@ -295,6 +295,8 @@ let g:rspec_runner = 'os_x_iterm2'
 let g:ruby_indent_access_modifier_style = 'indent'
 
 let g:slime_target = 'tmux'
+
+let g:snipMate = { 'snippet_version': 0 }
 
 if has("autocmd")
   if !exists("g:autocommans_loaded")

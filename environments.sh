@@ -1,11 +1,18 @@
 #!/bin/sh
 
+CPU=$(uname -p)
+
 # Ruby installation
 /bin/echo -n "Ruby version to install? "
 read ruby
 
 if test -n "${ruby}"; then
-  RUBY_CONFIGURE_OPTS="--with-jemalloc" rbenv install "$ruby"
+  if [[ "$CPU" == "arm" ]]; then
+    RUBY_CONFIGURE_OPTS="--with-opt-dir=/opt/homebrew --with-jemalloc" rbenv install "$ruby"
+  else
+    RUBY_CONFIGURE_OPTS="--with-jemalloc" rbenv install "$ruby"
+  fi
+
   rbenv global "${ruby}"
   rbenv rehash
 

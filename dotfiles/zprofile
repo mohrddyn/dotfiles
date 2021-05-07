@@ -19,11 +19,8 @@ typeset -gU cdpath fpath path
 # Zsh search path for executable
 CPU=$(uname -p)
 if [[ "$CPU" == "arm" ]]; then
-path=(
-  $HOME/.bin
-  /opt/homebrew/{bin,sbin}
-  $path
-)
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  export PATH="./bin${PATH+:$PATH}"
 else
 path=(
   $HOME/.bin

@@ -1,12 +1,12 @@
-tap "homebrew/services"
-tap "thoughtbot/formulae"
 brew "ack"
+brew "antigen"
 brew "awscli"
 brew "carthage"
 brew "cocoapods"
 brew "ctags"
 brew "direnv"
-brew "erlang", args: ["with-native-libs", "without-docs", "without-hipe"]
+brew "elixir-build"
+brew "erlang"
 brew "exenv"
 brew "gh"
 brew "git"
@@ -18,12 +18,10 @@ brew "llvm"
 brew "memcached", restart_service: true
 brew "nodenv"
 brew "p7zip"
-brew "postgresql", restart_service: true, args: ["with-dtrace", "without-perl", "without-tcl"]
-brew "puma-dev"
+brew "postgresql", restart_service: true
 brew "rbenv"
 brew "rcm"
-brew "redis", restart_service: true, args: ["with-jemalloc"]
-brew "roswell"
+brew "redis", restart_service: true
 brew "the_silver_searcher"
 brew "tig"
 brew "tmux"
